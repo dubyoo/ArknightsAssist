@@ -33,16 +33,13 @@ class BindWindow(QWidget):
         super().show()
         self.ui.listWidget.clear()
         self.get_windows()
-
         for i in range(len(self.window_list)):
-            title = show_title = self.window_list[i].title
-            if len(title) > 35:
-                show_title = title[:15] + ' ... ' + title[-15:]
-            self.ui.listWidget.addItem(show_title)
+            title = self.window_list[i].title
+            self.ui.listWidget.addItem(title)
             rect = self.window_list[i].rect
-            tooltip = title + '\n' + 'x = %d, y = %d, width = %d, height = %d' % (rect[0], rect[1], rect[2], rect[3])
+            tooltip = title + '\n' + 'x = %d, y = %d, width = %d, height = %d' \
+                % (rect[0], rect[1], rect[2] - rect[0], rect[3] - rect[1])
             self.ui.listWidget.item(i).setToolTip(tooltip)
-
         self.ui.listWidget.doubleClicked.connect(self.check_item)
 
     def get_windows(self):

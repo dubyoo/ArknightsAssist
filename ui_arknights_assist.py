@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ArknightsAssist(object):
     def setupUi(self, ArknightsAssist):
         ArknightsAssist.setObjectName("ArknightsAssist")
-        ArknightsAssist.resize(330, 335)
+        ArknightsAssist.resize(500, 350)
         self.gridLayout = QtWidgets.QGridLayout(ArknightsAssist)
         self.gridLayout.setObjectName("gridLayout")
         self.textBrowser = QtWidgets.QTextBrowser(ArknightsAssist)

@@ -36,9 +36,8 @@ class ArknightsAssist(QWidget):
         self.ui.spinBox_auto_feed.setEnabled(True if self.ui.checkBox_auto_feed.checkState() == Qt.Checked else False)
 
     def select_window(self):
-        x = self.x() + self.width()
-        y = self.y()
-        self.child_window.move(x, y)
+        self.child_window.resize(self.width(), self.height())
+        self.child_window.move(self.x(), self.y())
         self.child_window.show()
 
     def on_window_selected(self, window_info):
@@ -46,10 +45,8 @@ class ArknightsAssist(QWidget):
             self.ui.pushButton_select_window.setText('Select Window')
             self.bind_window_name = None
         else:
-            self.bind_window_name = show_title = window_info.title
-            if len(self.bind_window_name) >= 30:
-                show_title = self.bind_window_name[:12] + ' ... ' + self.bind_window_name[-12:]
-            self.ui.pushButton_select_window.setText(show_title)
+            self.bind_window_name = window_info.title
+            self.ui.pushButton_select_window.setText(self.bind_window_name)
 
     def start(self):
         self.ui.pushButton_stop.setEnabled(True)

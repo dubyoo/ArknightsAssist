@@ -71,7 +71,7 @@ class Arknights:
             # bonus page
             while not self.is_proxy_ready():
                 logging.debug('bonus time ~~~')
-                click_in_region(*Region_Bonus)
+                click_in_region(self.ts, *Region_Bonus)
                 self.thread_sleep(500, 1000)
             logging.debug('leave bonus page')
             logging.info('<------ Mission End (%d)------>' % counter)
@@ -86,11 +86,11 @@ class Arknights:
             logging.info('proxy is not ready')
             self.thread_sleep(500)
         logging.debug('click KaiShiXingDong(Blue)')
-        click_in_region(*Region_KaiShiXingDong_Blue)
+        click_in_region(self.ts, *Region_KaiShiXingDong_Blue)
         while self.ts.GetColor(*Coord_KaiShiXingDong_Red) != Color_KaiShiXingDong_Red:
             self.thread_sleep(500)
         logging.debug('click KaiShiXingDong(Red)')
-        click_in_region(*Region_KaiShiXingDong_Red)
+        click_in_region(self.ts, *Region_KaiShiXingDong_Red)
         logging.debug('entered battlefield')
 
     def is_in_the_battle(self):
