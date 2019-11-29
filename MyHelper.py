@@ -96,4 +96,4 @@ def bind_window(ts_plugin, window_name):
 
 
 def unbind_window(ts_plugin):
-    logging.info('UnBindWindow return:', ts_plugin.UnBindWindow())
+    logging.info('UnBindWindow return: %d' % ts_plugin.UnBindWindow())
