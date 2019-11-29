@@ -70,7 +70,7 @@ class Arknights:
             logging.debug('leave bonus page')
             logging.info('<------ Battle Finished (%d)------>' % counter)
             if self.count == counter:
-                self.arknights_assist.stop()
+                self.arknights_assist.ui.pushButton_stop.click()
             self.thread_sleep(500)
 
     def enter_battlefield(self):
