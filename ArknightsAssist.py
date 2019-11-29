@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from PyQt5.QtWidgets import QWidget, QApplication
+from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import Qt
 from MyHelper import *
 import Arknights
@@ -18,6 +18,8 @@ class ArknightsAssist(QWidget):
         self.ui.spinBox_count.setEnabled(False)
         self.ui.spinBox_auto_feed.setEnabled(False)
         self.ui.pushButton_stop.setEnabled(False)
+        XStream.stdout().messageWritten.connect(self.ui.textBrowser.append)
+        XStream.stderr().messageWritten.connect(self.ui.textBrowser.append)
         self.ui.checkBox_count.stateChanged.connect(self.on_checkbox_clicked)
         self.ui.checkBox_auto_feed.stateChanged.connect(self.on_checkbox_clicked)
         self.ui.pushButton_start.clicked.connect(self.start)

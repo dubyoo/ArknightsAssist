@@ -42,13 +42,19 @@ class Arknights:
         return self._running
 
     def thread_sleep(self, sleep_time, variable_time=0):
-        random_sleep(sleep_time, variable_time) if self._running else quit()
+        if self._running:
+            random_sleep(sleep_time, variable_time)
+        if not self._running:
+            logging.info("Arknights stopped")
+            quit()
 
     def main_loop(self):
         # main loop of battle
+        print('--------------------')
         counter = 0
-        while True:
+        while self._running:
             counter += 1
+            logging.info('<------ Mission Start (%d)------>' % counter)
             self.enter_battlefield()
 
             # detect if we are in the battle
@@ -68,9 +74,11 @@ class Arknights:
                 click_in_region(*Region_Bonus)
                 self.thread_sleep(500, 1000)
             logging.debug('leave bonus page')
-            logging.info('<------ Battle Finished (%d)------>' % counter)
+            logging.info('<------ Mission End (%d)------>' % counter)
             if self.count == counter:
                 self.arknights_assist.ui.pushButton_stop.click()
+                logging.info("Arknights %d mission planning finished" % self.count)
+                quit()
             self.thread_sleep(500)
 
     def enter_battlefield(self):
