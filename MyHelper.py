@@ -16,7 +16,7 @@ Coord_KaiShiXingDong_Red = 1173, 456
 Coord_InTheBattle = 1339, 95
 
 # Click Region (x1, y1, x2, y2)
-Region_KaiShiXingDong_Blue = 1176, 748, 1391, 805
+Region_KaiShiXingDong_Blue = 1206, 757, 1370, 790
 Region_KaiShiXingDong_Red = 1173, 456, 1308, 753
 Region_Bonus = 1100, 260, 1400, 400
 
