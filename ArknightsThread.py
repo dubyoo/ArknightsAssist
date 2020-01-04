@@ -81,6 +81,10 @@ class ArknightsThread(threading.Thread):
         logger.debug('点击【开始行动（蓝）】')
         click_in_region(self._ts, *Region_KaiShiXingDong_Blue)
         while self._ts.GetColor(*Coord_KaiShiXingDong_Red) != Color_KaiShiXingDong_Red:
+            current_time = time.clock()
+            if current_time - start_time > 10:
+                logger.info("理智不足，正在退出")
+                self.__emit_stop_signal()
             self.__sleep_or_quit(500)
         logger.debug('点击【开始行动（红）】')
         click_in_region(self._ts, *Region_KaiShiXingDong_Red)
